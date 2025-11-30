@@ -147,3 +147,10 @@ WHERE dfirstname = 'Dr.Sofia';
 SELECT DISTINCT species FROM animals;
 
 SELECT SUM(totalamount) as total_sales FROM invoices;
+
+SELECT o.ofirstname, o.olastname, COUNT(ap.appointid) as total_appointments
+FROM owners o
+JOIN animals an ON o.ownerid = an.ownerid
+JOIN appointments ap ON an.animalid = ap.animalid
+WHERE o.ofirstname = 'Maria'
+GROUP BY o.ofirstname, o.olastname;
